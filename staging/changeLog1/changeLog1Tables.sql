@@ -81,3 +81,13 @@ create table result_temp
        disable
 );
 --rollback drop table result_temp cascade constraints purge;
+
+--changeset drsteini:1SchemaTablesAE
+create table stewards_raw_xml
+(file_name                      varchar2(100 char)
+,load_timestamp                 timestamp(6)
+,raw_xml                        xmltype
+,constraint stewards_raw_xml_pk
+  primary key (load_timestamp, file_name)
+);
+--rollback drop table stewards_raw_xml cascade constraints purge;
