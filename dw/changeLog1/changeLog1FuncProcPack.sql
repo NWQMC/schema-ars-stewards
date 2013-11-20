@@ -1,6 +1,6 @@
 --liquibase formatted sql
 
---This is for the nwis_ws_star schema
+--This is for the ars_stewards schema
  
 --changeset drsteini:1SchemaFuncProcPackAA endDelimiter:/ splitStatements:false
 create or replace package pkg_dynamic_list as
