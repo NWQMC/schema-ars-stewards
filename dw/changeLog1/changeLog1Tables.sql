@@ -106,7 +106,7 @@ create table county_00000
 ,state_cd                       varchar2(2 char)
 ,sort_order                     number
 );
---rollback drop table country_00000 cascade constraints purge;
+--rollback drop table county_00000 cascade constraints purge;
 
 --changeset drsteini:1SchemaTablesAH
 create table samplemedia_00000
