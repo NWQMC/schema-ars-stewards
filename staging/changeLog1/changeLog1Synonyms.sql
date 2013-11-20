@@ -1,6 +1,6 @@
 --liquibase formatted sql
 
---This is for the nwis_ws_star schema
+--This is for the ars_stewards schema
 
 --changeset drsteini:1SchemaSynonymsAA
 create or replace synonym characteristicname for characteristicname_00000;
