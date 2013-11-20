@@ -41,3 +41,7 @@ grant select on state_00000 to ars_stewards_user;
 --changeset drsteini:1SchemaGrantsAJ
 grant select on station_00000 to ars_stewards_user;
 --rollback revoke select on station_00000 from ars_stewards_user;
+
+--changeset drsteini:1SchemaGrantsAK
+grant select on pkg_dynamic_list to ars_stewards_user;
+--rollback revoke select on pkg_dynamic_list from ars_stewards_user;
