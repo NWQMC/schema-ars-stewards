@@ -45,3 +45,7 @@ grant select on station_00000 to ars_stewards_user;
 --changeset drsteini:1SchemaGrantsAK
 grant execute on pkg_dynamic_list to ars_stewards_user;
 --rollback revoke execute on pkg_dynamic_list from ars_stewards_user;
+
+--changeset drsteini:1SchemaGrantsAL
+grant execute on typ_vctbl to ars_stewards_user;
+--rollback revoke execute on typ_vctbl from ars_stewards_user;
