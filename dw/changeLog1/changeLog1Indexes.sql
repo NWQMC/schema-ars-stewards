@@ -1,6 +1,6 @@
 --liquibase formatted sql
 
---This is for the nwis_ws_star schema
+--This is for the ars_stewards schema
 
 --changeset drsteini:1SchemaIndexesAB
 create bitmap index station_00000_country on station_00000 (country_cd);

@@ -1,6 +1,6 @@
 --liquibase formatted sql
 
---This is for the nwis_ws_star schema
+--This is for the ars_stewards schema
  
 --changeset drsteini:1SchemaGrantsAA
 grant select on activity_00000 to ars_stewards_user;
