@@ -11,8 +11,6 @@
     </preConditions>
 
 	<include file="changeLog1Tables.sql" relativeToChangelogFile="true"/>
-<!--     <include file="changeLog1Grants.sql" relativeToChangelogFile="true"/> -->
-<!--     <include file="changeLog1Synonyms.sql" relativeToChangelogFile="true"/> -->
-    <include file="changeLog1Indexes.sql" relativeToChangelogFile="true"/>
+<!--     <include file="changeLog1Indexes.sql" relativeToChangelogFile="true"/> -->
 
 </databaseChangeLog>

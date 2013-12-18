@@ -36,6 +36,16 @@ create table station_temp
 --rollback drop table station_temp cascade constraints purge;
 
 --changeset drsteini:1SchemaTablesAC
+create table split_activity
+(activity_pk                    number
+,organization_id                varchar2(500 char)
+,activity_details               xmltype
+,constraint split_activity_pk
+   primary key (activity_pk)
+);
+--rollback drop table split_activity cascade constraints purge;
+
+--changeset drsteini:1SchemaTablesAD
 create table activity_temp
 (activity_pk					number
 ,activity_details				xmltype
@@ -53,7 +63,7 @@ create table activity_temp
 );
 --rollback drop table activity_temp cascade constraints purge;
 
---changeset drsteini:1SchemaTablesAD
+--changeset drsteini:1SchemaTablesAE
 create table result_temp
 (result_pk						number
 ,result_details                 xmltype
@@ -82,7 +92,7 @@ create table result_temp
 );
 --rollback drop table result_temp cascade constraints purge;
 
---changeset drsteini:1SchemaTablesAE
+--changeset drsteini:1SchemaTablesAF
 create table stewards_raw_xml
 (file_name                      varchar2(100 char)
 ,load_timestamp                 timestamp(6)
