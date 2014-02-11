@@ -89,7 +89,7 @@ create table raw_station_xml
 ,load_timestamp                 timestamp(6)
 ,raw_xml                        xmltype
 ,constraint raw_station_xml_pk
-  primary key (load_timestamp, file_name)
+  primary key (file_name)
 );
 --rollback drop table raw_station_xml cascade constraints purge;
 
@@ -99,6 +99,6 @@ create table raw_result_xml
 ,load_timestamp                 timestamp(6)
 ,raw_xml                        xmltype
 ,constraint raw_result_xml_pk
-  primary key (load_timestamp, file_name)
+  primary key (file_name)
 );
 --rollback drop table raw_result_xml cascade constraints purge;
