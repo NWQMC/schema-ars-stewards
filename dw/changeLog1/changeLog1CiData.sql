@@ -79,16 +79,16 @@ insert into station_00000 (station_pk, station_id, station_details, country_cd, 
 --rollback delete from station_00000 where station_pk = 1;
 
 --changeset drsteini:1DataAK context:ci
-insert into characteristictype_00001 (code_value, sort_order)
+insert into characteristictype_00000 (code_value, sort_order)
 values ('Biological', 1);
-insert into characteristictype_00001 (code_value, sort_order)
+insert into characteristictype_00000 (code_value, sort_order)
 values ('Inorganics, Major, Non-metals', 2);
-insert into characteristictype_00001 (code_value, sort_order)
+insert into characteristictype_00000 (code_value, sort_order)
 values ('Inorganics, Minor, Metals', 3);
-insert into characteristictype_00001 (code_value, sort_order)
+insert into characteristictype_00000 (code_value, sort_order)
 values ('Nutrient', 4);
-insert into characteristictype_00001 (code_value, sort_order)
+insert into characteristictype_00000 (code_value, sort_order)
 values ('Organics, Pesticide', 5);
-insert into characteristictype_00001 (code_value, sort_order)
+insert into characteristictype_00000 (code_value, sort_order)
 values ('Physical', 6);
 --rollback truncate table characteristictype_00001;
