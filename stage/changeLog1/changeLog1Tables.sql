@@ -101,3 +101,12 @@ create table raw_result_xml
   primary key (file_name)
 );
 --rollback drop table raw_result_xml cascade constraints purge;
+
+--changeset drsteini:1SchemaTablesAH
+create table site_type_to_group
+(site_type                      varchar2(500 char)
+,site_group                     varchar2(500 char)
+,constraint site_type_to_group_pk
+  primary key (site_type)
+);
+--rollback drop table site_type_to_group cascade constraints purge;
