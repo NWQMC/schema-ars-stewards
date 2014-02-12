@@ -141,3 +141,7 @@ create table characteristic_name_to_type
    primary key (characteristic_name)
 );
 --rollback drop table characteristic_name_to_type cascade constraints purge;
+
+--changeset drsteini:1SchemaTablesAM
+alter table result_00000 add characteristic_type varchar2(500 char);
+--rollback alter table result_00000 drop characteristic_type;
