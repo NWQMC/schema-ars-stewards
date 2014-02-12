@@ -91,4 +91,4 @@ insert into characteristictype_00000 (code_value, sort_order)
 values ('Organics, Pesticide', 5);
 insert into characteristictype_00000 (code_value, sort_order)
 values ('Physical', 6);
---rollback truncate table characteristictype_00001;
+--rollback truncate table characteristictype_00000;
