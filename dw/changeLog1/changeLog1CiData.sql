@@ -77,3 +77,18 @@ insert into state_00000 (code_value, description_with_country, description_with_
 insert into station_00000 (station_pk, station_id, station_details, country_cd, county_cd, huc_8, organization_id, state_cd, site_type)
  values (1, 'IASF-IASF272', '<MonitoringLocation><MonitoringLocationIdentity><MonitoringLocationIdentifier>IASF-IASF272</MonitoringLocationIdentifier><MonitoringLocationName>IASF272</MonitoringLocationName><MonitoringLocationTypeName>Land Runoff</MonitoringLocationTypeName><MonitoringLocationDescriptionText>A drainage ditch monitoring site located ~½ mile (.8 km) between A Avenue and 941st Street.  Water quality grab samples are taken and analyzed for sediment concentration, nitrate, and total phosphorus.</MonitoringLocationDescriptionText><HUCEightDigitCode>07080207</HUCEightDigitCode><HUCTwelveDigitCode>070802070601</HUCTwelveDigitCode><DrainageAreaMeasure><MeasureValue>12</MeasureValue><MeasureUnitCode>square miles</MeasureUnitCode></DrainageAreaMeasure></MonitoringLocationIdentity><MonitoringLocationGeospatial><LatitudeMeasure>42.5144659085</LatitudeMeasure><LongitudeMeasure>-93.471732254</LongitudeMeasure><HorizontalCollectionMethodName>GPS Code (Pseudo Range) Differential</HorizontalCollectionMethodName><HorizontalCoordinateReferenceSystemDatumName>NAD83</HorizontalCoordinateReferenceSystemDatumName><CountryCode>US</CountryCode><StateCode>19</StateCode><CountyCode>083</CountyCode></MonitoringLocationGeospatial><WellInformation><AquiferName>Dave&apos;s Aquifer</AquiferName><AquiferTypeName>My Aquifer Type</AquiferTypeName><WellDepthMeasure><MeasureValue>155</MeasureValue><MeasureUnitCode>ft</MeasureUnitCode></WellDepthMeasure></WellInformation></MonitoringLocation>', 'US', '083', '07080207', 'ARS', '19', 'River/Stream');
 --rollback delete from station_00000 where station_pk = 1;
+
+--changeset drsteini:1DataAK context:ci
+insert into characteristictype_00001 (code_value, sort_order)
+values ('Biological', 1);
+insert into characteristictype_00001 (code_value, sort_order)
+values ('Inorganics, Major, Non-metals', 2);
+insert into characteristictype_00001 (code_value, sort_order)
+values ('Inorganics, Minor, Metals', 3);
+insert into characteristictype_00001 (code_value, sort_order)
+values ('Nutrient', 4);
+insert into characteristictype_00001 (code_value, sort_order)
+values ('Organics, Pesticide', 5);
+insert into characteristictype_00001 (code_value, sort_order)
+values ('Physical', 6);
+--rollback truncate table characteristictype_00001;
