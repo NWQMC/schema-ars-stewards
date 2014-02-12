@@ -39,17 +39,8 @@ create table station_00000
 create table activity_00000
 (activity_pk					number
 ,activity_details				xmltype
-,station_pk                		number
-,organization_id                varchar2(500 char)
-,station_id                		varchar2(100 char)
-,activity_start_date	  		date
-,activity_id	                varchar2(500 char)
 ,constraint activity_00000_pk
    primary key (activity_pk)
-,constraint activity_00000_station
-   foreign key (station_pk)
-     references station_00000 (station_pk)
-       disable
 );
 --rollback drop table activity_00000 cascade constraints purge;
 
@@ -133,3 +124,20 @@ create table state_00000
 ,sort_order                     number
 );
 --rollback drop table state_00000 cascade constraints purge;
+
+--changeset drsteini:1SchemaTablesAK
+create table characteristictype_00000
+(code_value                     varchar2(500 char)
+,description                    varchar2(4000 char)
+,sort_order                     number
+);
+--rollback drop table characteristictype_00000 cascade constraints purge;
+
+--changeset drsteini:1SchemaTablesAL
+create table characteristic_name_to_type
+(characteristic_name            varchar2(500 char)
+,characteristic_type            varchar2(500 char)
+,constraint characteristic_name_type_pk
+   primary key (characteristic_name)
+);
+--rollback drop table characteristic_name_to_type cascade constraints purge;
