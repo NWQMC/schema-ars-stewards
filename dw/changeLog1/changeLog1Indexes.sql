@@ -86,3 +86,7 @@ create bitmap index result_00000_station on result_00000 (station_id);
 --changeset drsteini:1SchemaIndexesAV
 create bitmap index result_00000_station_pk on result_00000 (station_pk);
 --rollback drop index result_00000_station_pk;
+
+--changeset drsteini:1SchemaIndexesAW
+create bitmap index result_00000_char_type on result_00000 (characteristic_type);
+--rollback drop index result_00000_char_type;
