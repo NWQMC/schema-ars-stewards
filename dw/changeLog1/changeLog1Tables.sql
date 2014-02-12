@@ -144,4 +144,4 @@ create table characteristic_name_to_type
 
 --changeset drsteini:1SchemaTablesAM
 alter table result_00000 add characteristic_type varchar2(500 char);
---rollback alter table result_00000 drop characteristic_type;
+--rollback alter table result_00000 drop column characteristic_type;
