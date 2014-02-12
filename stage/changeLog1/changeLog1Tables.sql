@@ -25,7 +25,6 @@ create table station_temp
 ,organization_id                varchar2(500 char)
 ,state_cd                       varchar2(2 char)
 ,site_type                  	varchar2(500 char)
-,result_count					number
 ,constraint station_temp_pk
    primary key (station_pk)
 ,constraint station_temp_org

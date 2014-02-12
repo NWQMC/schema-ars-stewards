@@ -49,3 +49,7 @@ grant execute on pkg_dynamic_list to ars_stewards_user;
 --changeset drsteini:1SchemaGrantsAL
 grant execute on typ_vctbl to ars_stewards_user;
 --rollback revoke execute on typ_vctbl from ars_stewards_user;
+
+--changeset drsteini:1SchemaGrantsAM
+grant select on characteristictype_00000 to ars_stewards_user;
+--rollback revoke select on characteristictype_00000 from ars_stewards_user;

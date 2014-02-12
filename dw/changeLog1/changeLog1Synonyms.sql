@@ -41,3 +41,7 @@ create or replace synonym state for state_00000;
 --changeset drsteini:1SchemaSynonymsAJ
 create or replace synonym station for station_00000;
 --rollback drop synonym station;
+
+--changeset drsteini:1SchemaSynonymsAK
+create or replace synonym characteristictype for characteristictype_00000;
+--rollback drop synonym characteristictype;

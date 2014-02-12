@@ -8,6 +8,7 @@ create table organization_00000
 ,description                    varchar2(4000 char)
 ,organization_details			xmltype
 ,sort_order                     number
+,organization_clob              clob
 ,constraint organization_00000_pk
    primary key (code_value)
 );
@@ -25,7 +26,7 @@ create table station_00000
 ,organization_id                varchar2(500 char)
 ,state_cd                       varchar2(2 char)
 ,site_type                  	varchar2(500 char)
-,result_count					number
+,station_clob                   clob
 ,constraint station_00000_pk
    primary key (station_pk)
 ,constraint station_00000_org
@@ -39,6 +40,7 @@ create table station_00000
 create table activity_00000
 (activity_pk					number
 ,activity_details				xmltype
+,activity_clob                  clob
 ,constraint activity_00000_pk
    primary key (activity_pk)
 );
@@ -60,6 +62,8 @@ create table result_00000
 ,sample_media		       		varchar2(30 char)
 ,state_cd                       varchar2(2 char)
 ,site_type	                   	varchar2(500 char)
+,result_clob                    clob
+,characteristic_type            varchar2(500 char)
 ,constraint result_00000_pk
    primary key (result_pk)
 ,constraint result_00000_station
@@ -141,7 +145,3 @@ create table characteristic_name_to_type
    primary key (characteristic_name)
 );
 --rollback drop table characteristic_name_to_type cascade constraints purge;
-
---changeset drsteini:1SchemaTablesAM
-alter table result_00000 add characteristic_type varchar2(500 char);
---rollback alter table result_00000 drop column characteristic_type;
