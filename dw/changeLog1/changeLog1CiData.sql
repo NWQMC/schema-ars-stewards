@@ -67,10 +67,10 @@ insert into samplemedia_00000 (code_value, sort_order)
 
 --changeset drsteini:1DataAH context:ci
 insert into sitetype_00000 (code_value, sort_order)
- values ('Land Runoff', 1);
+ values ('Land', 1);
 insert into sitetype_00000 (code_value, sort_order)
- values ('River/Stream', 2);
---rollback delete from sitetype_00000 where code_value in ('Land Runoff', 'River/Stream');
+ values ('Stream', 2);
+--rollback delete from sitetype_00000 where code_value in ('Land', 'Stream');
 
 --changeset drsteini:1DataAI context:ci
 insert into state_00000 (code_value, description_with_country, description_with_out_country, country_cd, sort_order)
