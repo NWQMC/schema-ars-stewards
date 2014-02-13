@@ -62,8 +62,8 @@ create table result_00000
 ,sample_media		       		varchar2(30 char)
 ,state_cd                       varchar2(2 char)
 ,site_type	                   	varchar2(500 char)
-,result_clob                    clob
 ,characteristic_type            varchar2(500 char)
+,result_clob                    clob
 ,constraint result_00000_pk
    primary key (result_pk)
 ,constraint result_00000_station
