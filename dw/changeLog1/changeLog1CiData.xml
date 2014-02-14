@@ -46,5 +46,7 @@
            <delete tableName="characteristictype_00000">
                 <where>code_value in ('Biological', 'Inorganics, Major, Non-metals', 'Inorganics, Minor, Metals', 'Nutrient', 'Organics, Pesticide', 'Physical')</where>
             </delete>
+        </rollback>
+    </changeSet>
 
 </databaseChangeLog>
