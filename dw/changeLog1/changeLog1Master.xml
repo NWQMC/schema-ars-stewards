@@ -18,6 +18,6 @@
     <include file="changeLog1Indexes.sql" relativeToChangelogFile="true"/>
     <include file="changeLog1Databaselink.sql" relativeToChangelogFile="true"/>
     <include file="changeLog1Data.sql" relativeToChangelogFile="true"/>
-    <include file="changeLog1CiData.sql" relativeToChangelogFile="true"/>
+    <include file="changeLog1CiData.xml" relativeToChangelogFile="true"/>
     
 </databaseChangeLog>
