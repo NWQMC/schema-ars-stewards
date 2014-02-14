@@ -10,7 +10,7 @@
         <runningAs username="ARS_STEWARDS" />
     </preConditions>
 
-    <changeSet author="drsteini" id="1SchemaCiDataAA" context:ci>
+    <changeSet author="drsteini" id="1SchemaCiDataAA" context="ci">
         <sqlFile encoding="utf8" relativeToChangelogFile="true" path="changeLog1CiData.sql"/>
         <rollback>
            <delete tableName="activity_00000">
