@@ -11,7 +11,7 @@
     </preConditions>
 
     <changeSet author="drsteini" id="1SchemaCiDataAA" context="ci">
-        <sqlFile encoding="utf8" relativeToChangelogFile="true" path="changeLog1CiData.sql" stripComments="true"/>
+        <sqlFile encoding="UTF-8" relativeToChangelogFile="true" path="changeLog1CiData.sql" stripComments="true"/>
         <rollback>
            <delete tableName="activity_00000">
                 <where>activity_pk = 1</where>
