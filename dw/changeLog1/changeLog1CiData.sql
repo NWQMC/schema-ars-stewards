@@ -1,7 +1,9 @@
 --liquibase formatted sql
 
 --This is for the ars_stewards schema
-
+--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+--!!! WARNING - This file is UTF-8 to get the ½ characteter (1/2) into the database for UTF-8 testing - WARNING !!!!!!!!!!!!!!!!!!!!!!
+--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 --changeset drsteini:1DataAA context:ci
 insert into activity_00000 (activity_pk, activity_details, activity_clob)
  values (1, '<Activity><ActivityDescription><ActivityIdentifier>IASF</ActivityIdentifier><ActivityTypeCode>Sample-Routine</ActivityTypeCode><ActivityMediaName>water</ActivityMediaName><ActivityStartDate>6/15/2001</ActivityStartDate><ActivityStartTime><Time>12:00:00</Time><TimeZoneCode>CST</TimeZoneCode></ActivityStartTime><MeasureValue/><MeasureUnitCode/><ActivityDepthHeightMeasure/><ProjectIdentifier>CEAP</ProjectIdentifier><MonitoringLocationIdentifier>IASF-IASF272</MonitoringLocationIdentifier><ActivityCommentText/></ActivityDescription><SampleDescription><SampleCollectionMethod><MethodIdentifier>NSTL_FM10</MethodIdentifier><MethodIdentifierContext>ARS Methods Catalog</MethodIdentifierContext><MethodName>Manual Surface Water Sampling with No Filtering</MethodName><MethodDescriptionText/></SampleCollectionMethod><SampleCollectionEquipmentName>Water Bottle</SampleCollectionEquipmentName><SampleCollectionEquipmentCommentText/></SampleDescription></Activity>',
