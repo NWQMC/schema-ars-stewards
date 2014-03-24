@@ -3,7 +3,7 @@
 --This is for the ars_stewards schema
  
 --changeset drsteini:2SchemaTablesAA
-drop table site_type_to_primary cascade constraints purge;
+drop table characteristic_name_to_type cascade constraints purge;
 --rollback create table characteristic_name_to_type
 --rollback (characteristic_name            varchar2(500 char)
 --rollback ,characteristic_type            varchar2(500 char)

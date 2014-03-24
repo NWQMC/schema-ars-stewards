@@ -9,7 +9,7 @@ create table characteristic_name_to_type
 ,constraint characteristic_name_type_pk
    primary key (characteristic_name)
 );
---rollback drop table site_type_to_primary cascade constraints purge;
+--rollback drop table characteristic_name_to_type cascade constraints purge;
 
 --changeset drsteini:2SchemaTablesAB
 alter table organization_temp drop column organization_details;
