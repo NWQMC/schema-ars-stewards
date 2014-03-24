@@ -36,7 +36,7 @@ alter table result_00000 add (geom mdsys.sdo_geometry);
 --rollback alter table result_00000 drop column geom;
 
 --changeset drsteini:2SchemaTablesAK
-drop table activity_00000;
+drop table activity_00000 cascade constraints purge;
 --rollback create table activity_00000
 --rollback (activity_pk                    number
 --rollback ,activity_details               xmltype
