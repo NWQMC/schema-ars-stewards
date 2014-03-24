@@ -30,3 +30,7 @@ alter table result_00000 add (activity_clob clob);
 --changeset drsteini:2SchemaTablesAI
 alter table station_00000 add (organization_clob clob);
 --rollback alter table station_00000 drop column organization_clob;
+
+--changeset drsteini:2SchemaTablesAJ
+alter table result_00000 add (geom mdsys.sdo_geometry);
+--rollback alter table result_00000 drop column geom;

@@ -46,3 +46,7 @@ alter table station_temp add (organization_clob clob);
 --changeset drsteini:2SchemaTablesAJ
 alter table station_temp add (station_clob clob);
 --rollback alter table station_temp drop column station_clob;
+
+--changeset drsteini:2SchemaTablesAK
+alter table result_temp add (geom mdsys.sdo_geometry);
+--rollback alter table result_temp drop column geom;
