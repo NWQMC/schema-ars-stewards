@@ -34,3 +34,13 @@ alter table station_00000 add (organization_clob clob);
 --changeset drsteini:2SchemaTablesAJ
 alter table result_00000 add (geom mdsys.sdo_geometry);
 --rollback alter table result_00000 drop column geom;
+
+--changeset drsteini:2SchemaTablesAK
+drop table activity_00000 cascade constraints purge;
+--rollback create table activity_00000
+--rollback (activity_pk                    number
+--rollback ,activity_details               xmltype
+--rollback ,activity_clob                  clob
+--rollback ,constraint activity_00000_pk
+--rollback    primary key (activity_pk)
+--rollback );
