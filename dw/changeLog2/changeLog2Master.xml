@@ -13,5 +13,6 @@
     <include file="changeLog2Tables.sql" relativeToChangelogFile="true"/>
     <include file="changeLog2CiData.sql" relativeToChangelogFile="true"/>
     <include file="changeLog2Indexes.sql" relativeToChangelogFile="true"/>
+    <include file="changeLog2Synonyms.sql" relativeToChangelogFile="true"/>
     
 </databaseChangeLog>
