@@ -35,10 +35,6 @@ alter table result_00000 add (activity_clob clob);
 alter table result_00000 add (result_clob clob);
 --rollback alter table result_00000 drop column result_clob;
 
---changeset drsteini:2SchemaTablesAH
-alter table station_00000 drop column station_details;
---rollback alter table station_00000 add (station_details xmltype);
-
 --changeset drsteini:2SchemaTablesAI
 alter table station_00000 add (organization_clob clob);
 --rollback alter table station_00000 drop column organization_clob;
