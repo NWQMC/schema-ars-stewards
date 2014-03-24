@@ -19,10 +19,6 @@ alter table organization_00000 drop column organization_details;
 alter table result_00000 drop column result_details;
 --rollback alter table result_00000 add (result_details xmltype);
 
---changeset drsteini:2SchemaTablesAD
-alter table result_00000 add (characteristic_type varchar2(500 char));
---rollback alter table result_00000 drop column characteristic_type;
-
 --changeset drsteini:2SchemaTablesAE
 alter table result_00000 add (organization_clob clob);
 --rollback alter table result_00000 drop column organization_clob;
@@ -31,14 +27,6 @@ alter table result_00000 add (organization_clob clob);
 alter table result_00000 add (activity_clob clob);
 --rollback alter table result_00000 drop column activity_clob;
 
---changeset drsteini:2SchemaTablesAG
-alter table result_00000 add (result_clob clob);
---rollback alter table result_00000 drop column result_clob;
-
 --changeset drsteini:2SchemaTablesAI
 alter table station_00000 add (organization_clob clob);
 --rollback alter table station_00000 drop column organization_clob;
-
---changeset drsteini:2SchemaTablesAJ
-alter table station_00000 add (station_clob clob);
---rollback alter table station_00000 drop column station_clob;
