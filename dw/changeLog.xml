@@ -11,6 +11,6 @@
     </preConditions>
 
 	<include file="changeLog1/changeLog1Master.xml" relativeToChangelogFile="true"/>
-    <include file="changeLog1/changeLog2Master.xml" relativeToChangelogFile="true"/>
+    <include file="changeLog2/changeLog2Master.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>
