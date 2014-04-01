@@ -14,5 +14,6 @@
     <include file="changeLog2CiData.sql" relativeToChangelogFile="true"/>
     <include file="changeLog2Indexes.sql" relativeToChangelogFile="true"/>
     <include file="changeLog2Synonyms.sql" relativeToChangelogFile="true"/>
+    <include file="changeLog2Views.sql" relativeToChangelogFile="true"/>
     
 </databaseChangeLog>
