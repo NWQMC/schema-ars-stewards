@@ -15,5 +15,7 @@
     <include file="changeLog2Indexes.sql" relativeToChangelogFile="true"/>
     <include file="changeLog2Synonyms.sql" relativeToChangelogFile="true"/>
     <include file="changeLog2Views.sql" relativeToChangelogFile="true"/>
+    <include file="changeLog2FuncProcPack.sql" relativeToChangelogFile="true"/>
+    <include file="changeLog2Types.sql" relativeToChangelogFile="true"/>
     
 </databaseChangeLog>
