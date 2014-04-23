@@ -3,7 +3,7 @@
 --This is for the ars_stewards schema
  
 --changeset drsteini:2SchemaFuncProcPackAA endDelimiter:/ splitStatements:false
-drop package body pkg_dynamic_list
+drop package body pkg_dynamic_list;
 --rollback create or replace package body pkg_dynamic_list as
 --rollback     function get_table (p_char in typ_vctbl)
 --rollback         return typ_vctbl pipelined is
@@ -17,7 +17,7 @@ drop package body pkg_dynamic_list
 --rollback end pkg_dynamic_list;
 
 --changeset drsteini:2SchemaFuncProcPackAB endDelimiter:/ splitStatements:false
-drop package pkg_dynamic_list
+drop package pkg_dynamic_list;
 --rollback create or replace package pkg_dynamic_list as
 --rollback function get_table (p_char in typ_vctbl)
 --rollback         return typ_vctbl pipelined;
