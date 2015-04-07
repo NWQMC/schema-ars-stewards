@@ -10,7 +10,7 @@
 		<runningAs username="ARS_STEWARDS" />
     </preConditions>
 
-	<include file="changeLog1/changeLog1Master.xml" relativeToChangelogFile="true"/>
-    <include file="changeLog2/changeLog2Master.xml" relativeToChangelogFile="true"/>
+	<include file="changeLog1/changeLog.xml" relativeToChangelogFile="true"/>
+	<include file="changeLogData/changeLog.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>
