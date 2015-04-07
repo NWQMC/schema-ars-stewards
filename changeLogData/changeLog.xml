@@ -11,7 +11,7 @@
     </preConditions>
 
     <changeSet author="drsteini" id="loadCharNameToType" runOnChange="true">
-        <delete tableName="ars_char_name_to_type"/>
+        <delete tableName="char_name_to_type"/>
         <loadData encoding="UTF-8"
                   file="changeLogData/char_name_to_type.csv"
                   tableName="char_name_to_type">
