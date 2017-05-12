@@ -1,0 +1,36 @@
+databaseChangeLog:
+  - preConditions:
+    - dbms:
+        type: oracle
+
+  - changeSet:
+      author: drsteini
+      id: "grant.select.raw_station_xml.wqp_core"
+      changes:
+        - sql:
+            sql: grant select on raw_station_xml to wqp_core;
+        - rollback: revoke select on raw_station_xml from wqp_core;
+
+  - changeSet:
+      author: drsteini
+      id: "grant.select.raw_result_xml.wqp_core"
+      changes:
+        - sql:
+            sql: grant select on raw_result_xml to wqp_core;
+        - rollback: revoke select on raw_result_xml from wqp_core;
+
+  - changeSet:
+      author: drsteini
+      id: "grant.select.site_type_to_primary.wqp_core"
+      changes:
+        - sql:
+            sql: grant select on site_type_to_primary to wqp_core;
+        - rollback: revoke select on site_type_to_primary from wqp_core;
+
+  - changeSet:
+      author: drsteini
+      id: "grant.select.char_name_to_type.wqp_core"
+      changes:
+        - sql:
+            sql: grant select on char_name_to_type to wqp_core;
+        - rollback: revoke select on char_name_to_type from wqp_core;

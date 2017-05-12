@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - preConditions:
+    - dbms:
+        type: oracle
+
+  - changeSet:
+      author: drsteini
+      id: "create.table.char_name_to_type"
+      preConditions:
+        - onFail: MARK_RAN
+        - onError: HALT
+        - not:
+          - tableExists:
+              tableName: char_name_to_type
+      changes:
+        - sqlFile:
+            path: charNameToType.sql
+            relativeToChangelogFile: true
+        - rollback: drop table char_name_to_type cascade constraints purge;
