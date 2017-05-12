@@ -1,0 +1,34 @@
+databaseChangeLog:
+  - preConditions:
+    - dbms:
+        type: oracle
+
+  - changeSet:
+      id: load.char_name_to_type
+      author: drsteini
+      runOnChange: true
+      changes:
+        - delete:
+            tableName: char_name_to_type
+        - loadData:
+            encoding: UTF-8
+            file: char_name_to_type.tsv
+            relativeToChangelogFile: true
+            separator: \t
+            tableName: char_name_to_type
+        - rollback: select 'no rollback - you must restore previous lat_long_accuracy.tsv and rerun manually' from dual
+
+  - changeSet:
+      id: load.site_type_to_primary
+      author: drsteini
+      runOnChange: true
+      changes:
+        - delete:
+            tableName: site_type_to_primary
+        - loadData:
+            encoding: UTF-8
+            file: site_type_to_primary.tsv
+            relativeToChangelogFile: true
+            separator: \t
+            tableName: site_type_to_primary
+        - rollback: select 'no rollback - you must restore previous lat_long_accuracy.tsv and rerun manually' from dual

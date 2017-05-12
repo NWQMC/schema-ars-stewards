@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - preConditions:
+    - dbms:
+        type: oracle
+
+  - include:
+      file: "charNameToType/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "rawResultXml/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "rawStationXml/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "siteTypeToPrimary/changeLog.yml"
+      relativeToChangelogFile: true
