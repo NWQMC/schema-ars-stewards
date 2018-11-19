@@ -19,6 +19,14 @@ databaseChangeLog:
         - rollback: drop role if exists ${ARS_STEWARDS_OWNER};
 
   - changeSet:
+      author: mbucknel
+      id: "grant.${ARS_STEWARDS_OWNER}.to.postgres"
+      changes:
+        - sql: grant ${ARS_STEWARDS_OWNER} to postgres;
+        - rollback: revoke ${ARS_STEWARDS_OWNER} from postgres;
+
+
+  - changeSet:
       author: mbucknell
       id: "create.project.database.${ARS_STEWARDS_DATABASE_NAME}"
       preConditions:
