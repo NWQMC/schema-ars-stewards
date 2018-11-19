@@ -1,0 +1,10 @@
+version: '3'
+services:
+  db:
+    build:
+      context: .
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    ports:
+      - 5434:5432
+    container_name: ARS_STEWARDS_Database
