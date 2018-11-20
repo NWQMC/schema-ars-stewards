@@ -13,6 +13,6 @@ databaseChangeLog:
       file: "grants/changeLog.yml"
       relativeToChangelogFile: true
 
-#  - include:
-#      file: "zData/changeLog.yml"
-#      relativeToChangelogFile: true
+  - include:
+      file: "zData/changeLog.yml"
+      relativeToChangelogFile: true
