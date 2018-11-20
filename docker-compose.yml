@@ -18,6 +18,8 @@ services:
       - ARS_STEWARDS_OWNER_PASSWORD=${ARS_STEWARDS_OWNER_PASSWORD}
       - ARS_STEWARDS_DATABASE_NAME=${ARS_STEWARDS_DATABASE_NAME}
       - ARS_STEWARDS_SCHEMA_NAME=${ARS_STEWARDS_SCHEMA_NAME}
+      - WQP_CORE_OWNER=${WQP_CORE_OWNER}
+      - WQP_CORE_OWNER_PASSWORD=${WQP_CORE_OWNER_PASSWORD}
     volumes:
       - ./liquibase/changeLogs:/opt/liquibase/workspace
       - ./liquibase/logs:/opt/liquibase/logs

@@ -25,6 +25,18 @@ databaseChangeLog:
         - sql: grant ${ARS_STEWARDS_OWNER} to postgres;
         - rollback: revoke ${ARS_STEWARDS_OWNER} from postgres;
 
+  - changeSet:
+      author: mbucknell
+      id: "create.project.owner.role.${WQP_CORE_OWNER}"
+      preConditions:
+        - onFail: MARK_RAN
+        - onError: HALT
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from pg_roles where rolname = '${WQP_CORE_OWNER}';
+      changes:
+        - sql: create role ${WQP_CORE_OWNER} with login password '${WQP_CORE_OWNER_PASSWORD}';
+        - rollback: drop role if exists ${WQP_CORE_OWNER};
 
   - changeSet:
       author: mbucknell

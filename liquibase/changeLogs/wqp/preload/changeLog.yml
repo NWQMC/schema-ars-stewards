@@ -1,9 +1,9 @@
 databaseChangeLog:
   - preConditions:
     - dbms:
-        type: oracle
+        type: postgresql
     - runningAs:
-        username: ARS_STEWARDS
+        username: ${ARS_STEWARDS_OWNER}
 
   - include:
       file: "tables/changeLog.yml"
@@ -13,6 +13,6 @@ databaseChangeLog:
       file: "grants/changeLog.yml"
       relativeToChangelogFile: true
 
-  - include:
-      file: "zData/changeLog.yml"
-      relativeToChangelogFile: true
+#  - include:
+#      file: "zData/changeLog.yml"
+#      relativeToChangelogFile: true

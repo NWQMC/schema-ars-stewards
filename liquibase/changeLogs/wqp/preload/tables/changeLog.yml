@@ -1,7 +1,9 @@
 databaseChangeLog:
   - preConditions:
     - dbms:
-        type: oracle
+        type: postgresql
+    -runningAs:
+        username: ${ARS_STEWARDS_OWNER}
 
   - include:
       file: "charNameToType/changeLog.yml"

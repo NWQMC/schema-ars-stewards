@@ -1,7 +1,10 @@
 databaseChangeLog:
   - preConditions:
     - dbms:
-        type: oracle
+        type: postgresql
+    - runningAs:
+        username: ${ARS_STEWARDS_OWNER}
+
 
   - changeSet:
       id: load.char_name_to_type
@@ -9,14 +12,14 @@ databaseChangeLog:
       runOnChange: true
       changes:
         - delete:
-            tableName: char_name_to_type
+            tableName: ${ARS_STEWARDS_OWNER}.char_name_to_type
         - loadData:
             encoding: UTF-8
             file: char_name_to_type.tsv
             relativeToChangelogFile: true
             separator: \t
             tableName: char_name_to_type
-        - rollback: select 'no rollback - you must restore previous lat_long_accuracy.tsv and rerun manually' from dual
+        - rollback: select 'no rollback - you must restore previous lat_long_accuracy.tsv and rerun manually'
 
   - changeSet:
       id: load.site_type_to_primary
@@ -31,4 +34,4 @@ databaseChangeLog:
             relativeToChangelogFile: true
             separator: \t
             tableName: site_type_to_primary
-        - rollback: select 'no rollback - you must restore previous lat_long_accuracy.tsv and rerun manually' from dual
+        - rollback: select 'no rollback - you must restore previous lat_long_accuracy.tsv and rerun manually'

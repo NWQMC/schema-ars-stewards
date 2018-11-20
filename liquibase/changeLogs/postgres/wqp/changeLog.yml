@@ -5,19 +5,33 @@ databaseChangeLog:
     - runningAs:
         username: postgres
 
-  - changeSet:
-      author: mbucknell
-      id: "alter_databasechangelog_owner_${ARS_STEWARDS_OWNER}"
-      changes:
-        - sql: alter table public.databasechangelog owner to ${ARS_STEWARDS_OWNER};
-        - rollback: alter table public.databasechangelog owner to postgres;
+#  - changeSet:
+#      author: mbucknell
+#      id: "alter_databasechangelog_owner_${ARS_STEWARDS_OWNER}"
+#      changes:
+#        - sql: alter table public.databasechangelog owner to ${ARS_STEWARDS_OWNER};
+#        - rollback: alter table public.databasechangelog owner to postgres;
+
+#  - changeSet:
+#      author: mbucknell
+#      id: "alter_databasechangeloglock_owner_${ARS_STEWARDS_OWNER}"
+#      changes:
+#        - sql: alter table public.databasechangeloglock owner to ${ARS_STEWARDS_OWNER};
+#        - rollback: alter table public.databasechangeloglock owner to postgres;
 
   - changeSet:
       author: mbucknell
-      id: "alter_databasechangeloglock_owner_${ARS_STEWARDS_OWNER}"
+      id: "grants.${ARS_STEWARDS_OWNER}.to.databasechangelog"
       changes:
-        - sql: alter table public.databasechangeloglock owner to ${ARS_STEWARDS_OWNER};
-        - rollback: alter table public.databasechangeloglock owner to postgres;
+        - sql: grant select, insert, update, delete on public.databasechangelog to ${ARS_STEWARDS_OWNER}
+        - rollback: revoke select, insert, update, delete on public.databasechangelog from ${ARS_STEWARDS_OWNER}
+
+  - changeSet:
+      author: mbucknell
+      id: "grants.${ARS_STEWARDS_OWNER}.to.databasechangeloglock"
+      changes:
+        - sql: grant select, insert, update, delete on public.databasechangeloglock to ${ARS_STEWARDS_OWNER}
+        - rollback: revoke select, insert, update, delete on public.databasechangeloglock from ${ARS_STEWARDS_OWNER}
 
   - changeSet:
       author: mbucknell
