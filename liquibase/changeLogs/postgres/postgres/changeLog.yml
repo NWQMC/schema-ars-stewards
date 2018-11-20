@@ -34,11 +34,11 @@ databaseChangeLog:
         - onError: HALT
         - sqlCheck:
             expectedResult: 0
-            sql: select count(*) from pg_database where datname='${ARS_STEWARDS_DATABASE_NAME}';
+            sql: select count(*) from pg_database where datname = '${ARS_STEWARDS_DATABASE_NAME}';
       runInTransaction: false
       changes:
         - sql: create database ${ARS_STEWARDS_DATABASE_NAME} with owner = ${ARS_STEWARDS_OWNER};
-        - rollback: drop database ${ARS_STEWARDS_DATABASE_NAME} if exists;
+        - rollback: drop database if exists ${ARS_STEWARDS_DATABASE_NAME};
 
   - changeSet:
       author: mbucknell
