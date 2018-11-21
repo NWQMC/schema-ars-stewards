@@ -43,7 +43,7 @@ ${LIQUIBASE_HOME}/liquibase \
 	--username=${ARS_STEWARDS_OWNER} \
 	--password=${ARS_STEWARDS_OWNER_PASSWORD} \
 	--logLevel=debug \
-	updateTestingRollback \
+	update \
 	-DARS_STEWARDS_OWNER=${ARS_STEWARDS_OWNER} \
 	-DARS_STEWARDS_SCHEMA_NAME=${ARS_STEWARDS_SCHEMA_NAME} \
 	-DWQP_CORE_OWNER=${WQP_CORE_OWNER} \
