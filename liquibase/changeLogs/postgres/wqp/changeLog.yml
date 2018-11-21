@@ -5,20 +5,6 @@ databaseChangeLog:
     - runningAs:
         username: postgres
 
-#  - changeSet:
-#      author: mbucknell
-#      id: "alter_databasechangelog_owner_${ARS_STEWARDS_OWNER}"
-#      changes:
-#        - sql: alter table public.databasechangelog owner to ${ARS_STEWARDS_OWNER};
-#        - rollback: alter table public.databasechangelog owner to postgres;
-
-#  - changeSet:
-#      author: mbucknell
-#      id: "alter_databasechangeloglock_owner_${ARS_STEWARDS_OWNER}"
-#      changes:
-#        - sql: alter table public.databasechangeloglock owner to ${ARS_STEWARDS_OWNER};
-#        - rollback: alter table public.databasechangeloglock owner to postgres;
-
   - changeSet:
       author: mbucknell
       id: "grants.${ARS_STEWARDS_OWNER}.to.databasechangelog"
