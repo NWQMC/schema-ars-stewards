@@ -6,11 +6,11 @@ databaseChangeLog:
         username: ${ARS_STEWARDS_OWNER}
 
   - include:
-      file: "tables/changeLog.yml"
+      file: "grants/changeLog.yml"
       relativeToChangelogFile: true
 
   - include:
-      file: "grants/changeLog.yml"
+      file: "tables/changeLog.yml"
       relativeToChangelogFile: true
 
   - include:
