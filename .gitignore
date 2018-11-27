@@ -1,1 +1,5 @@
 /.project
+.idea
+.env
+liquibase/logs/
+.settings

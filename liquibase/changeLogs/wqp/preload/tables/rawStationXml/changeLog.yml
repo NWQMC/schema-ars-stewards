@@ -1,19 +1,21 @@
 databaseChangeLog:
   - preConditions:
     - dbms:
-        type: oracle
+        type: postgresql
+    - runningAs:
+        username: ${ARS_STEWARDS_OWNER}
 
   - changeSet:
       author: drsteini
-      id: "create.table.char_name_to_type"
+      id: "create.table.raw_station_xml"
       preConditions:
         - onFail: MARK_RAN
         - onError: HALT
         - not:
           - tableExists:
-              tableName: char_name_to_type
+              tableName: raw_station_xml
       changes:
         - sqlFile:
-            path: charNameToType.sql
+            path: rawStationXml.sql
             relativeToChangelogFile: true
-        - rollback: drop table char_name_to_type cascade constraints purge;
+        - rollback: drop table if exists raw_station_xml cascade;

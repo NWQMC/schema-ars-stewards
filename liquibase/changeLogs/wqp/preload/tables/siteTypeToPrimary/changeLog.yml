@@ -1,7 +1,9 @@
 databaseChangeLog:
   - preConditions:
     - dbms:
-        type: oracle
+        type: postgresql
+    - runningAs:
+        username: ${ARS_STEWARDS_OWNER}
 
   - changeSet:
       author: drsteini
@@ -16,4 +18,4 @@ databaseChangeLog:
         - sqlFile:
             path: siteTypeToPrimary.sql
             relativeToChangelogFile: true
-        - rollback: drop table site_type_to_primary cascade constraints purge;
+        - rollback: drop table if exists site_type_to_primary cascade;

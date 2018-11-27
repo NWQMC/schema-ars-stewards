@@ -1,16 +1,16 @@
 databaseChangeLog:
   - preConditions:
     - dbms:
-        type: oracle
+        type: postgresql
     - runningAs:
-        username: ARS_STEWARDS
-
-  - include:
-      file: "tables/changeLog.yml"
-      relativeToChangelogFile: true
+        username: ${ARS_STEWARDS_OWNER}
 
   - include:
       file: "grants/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "tables/changeLog.yml"
       relativeToChangelogFile: true
 
   - include:
