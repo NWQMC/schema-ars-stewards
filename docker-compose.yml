@@ -1,6 +1,7 @@
 version: '3'
 services:
   db:
+    image: stewards_db
     build:
       context: .
     environment:
@@ -10,6 +11,7 @@ services:
     container_name: ARS_STEWARDS_Database
 
   liquibase:
+    image: stewards_liquibase
     build:
       context: ./liquibase
     environment:
@@ -23,3 +25,4 @@ services:
     volumes:
       - ./liquibase/changeLogs:/opt/liquibase/workspace
       - ./liquibase/logs:/opt/liquibase/logs
+      - ./liquibase/dbInit:/docker-entrypoint-initdb.d

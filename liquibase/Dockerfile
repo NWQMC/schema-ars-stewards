@@ -21,14 +21,6 @@ ADD https://jdbc.postgresql.org/download/$JDBC_JAR $LIQUIBASE_HOME/lib/
 
 RUN tar -xzf $LIQUIBASE_HOME/liquibase-$LIQUIBASE_VERSION-bin.tar.gz -C $LIQUIBASE_HOME/
 
-############################################
-# Grab Files to Configure Database with Liquibase
-############################################
-
-RUN mkdir /docker-entrypoint-initdb.d
-
-COPY ./dbInit/1_run_preload_liquibase.sh /docker-entrypoint-initdb.d/
-
 RUN chmod -R 777 $LIQUIBASE_HOME
 
 COPY ./docker-entrypoint.sh /usr/local/bin/
