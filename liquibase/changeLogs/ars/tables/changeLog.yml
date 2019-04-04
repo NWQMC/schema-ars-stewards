@@ -2,21 +2,25 @@ databaseChangeLog:
   - preConditions:
     - dbms:
         type: postgresql
-    -runningAs:
-        username: ${ARS_STEWARDS_OWNER}
+    - runningAs:
+        username: ${ARS_SCHEMA_OWNER_USERNAME}
 
   - include:
       file: "charNameToType/changeLog.yml"
       relativeToChangelogFile: true
 
   - include:
-      file: "rawResultXml/changeLog.yml"
-      relativeToChangelogFile: true
-
-  - include:
-      file: "rawStationXml/changeLog.yml"
-      relativeToChangelogFile: true
-
-  - include:
       file: "siteTypeToPrimary/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "monitoringLocation/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "orgProject/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "result/changeLog.yml"
       relativeToChangelogFile: true

@@ -3,19 +3,20 @@ databaseChangeLog:
     - dbms:
         type: postgresql
     - runningAs:
-        username: ${ARS_STEWARDS_OWNER}
+        username: ${ARS_SCHEMA_OWNER_USERNAME}
 
   - changeSet:
       author: drsteini
-      id: "create.table.raw_station_xml"
+      id: "create.table.${ARS_SCHEMA_NAME}.ars_result"
       preConditions:
         - onFail: MARK_RAN
         - onError: HALT
         - not:
           - tableExists:
-              tableName: raw_station_xml
+              schemaName: ${ARS_SCHEMA_NAME}
+              tableName: ars_result
       changes:
         - sqlFile:
-            path: rawStationXml.sql
+            path: arsResult.sql
             relativeToChangelogFile: true
-        - rollback: drop table if exists raw_station_xml cascade;
+        - rollback: drop table if exists ${ARS_SCHEMA_NAME}.ars_result cascade;

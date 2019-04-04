@@ -3,39 +3,39 @@ databaseChangeLog:
     - dbms:
         type: postgresql
     - runningAs:
-        username: ${ARS_STEWARDS_OWNER}
+        username: ${ARS_SCHEMA_OWNER_USERNAME}
 
 
   - changeSet:
-      id: load.${ARS_STEWARDS_SCHEMA_NAME}.char_name_to_type
+      id: load.${ARS_SCHEMA_NAME}.char_name_to_type
       author: drsteini
       runOnChange: true
       changes:
         - delete:
-            schemaName: ${ARS_STEWARDS_SCHEMA_NAME}
+            schemaName: ${ARS_SCHEMA_NAME}
             tableName: char_name_to_type
         - loadData:
             encoding: UTF-8
             file: char_name_to_type.tsv
             relativeToChangelogFile: true
             separator: \t
-            schemaName: ${ARS_STEWARDS_SCHEMA_NAME}
+            schemaName: ${ARS_SCHEMA_NAME}
             tableName: char_name_to_type
         - rollback: select 'no rollback - you must restore previous lat_long_accuracy.tsv and rerun manually'
 
   - changeSet:
-      id: load.${ARS_STEWARDS_SCHEMA_NAME}.site_type_to_primary
+      id: load.${ARS_SCHEMA_NAME}.site_type_to_primary
       author: drsteini
       runOnChange: true
       changes:
         - delete:
-            schemaName: ${ARS_STEWARDS_SCHEMA_NAME}
+            schemaName: ${ARS_SCHEMA_NAME}
             tableName: site_type_to_primary
         - loadData:
             encoding: UTF-8
             file: site_type_to_primary.tsv
             relativeToChangelogFile: true
             separator: \t
-            schemaName: ${ARS_STEWARDS_SCHEMA_NAME}
+            schemaName: ${ARS_SCHEMA_NAME}
             tableName: site_type_to_primary
         - rollback: select 'no rollback - you must restore previous lat_long_accuracy.tsv and rerun manually'
