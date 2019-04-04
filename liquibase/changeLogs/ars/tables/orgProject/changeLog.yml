@@ -3,19 +3,20 @@ databaseChangeLog:
     - dbms:
         type: postgresql
     - runningAs:
-        username: ${ARS_STEWARDS_OWNER}
+        username: ${ARS_SCHEMA_OWNER_USERNAME}
 
   - changeSet:
       author: drsteini
-      id: "create.table.site_type_to_primary"
+      id: "create.table.${ARS_SCHEMA_NAME}.ars_org_project"
       preConditions:
         - onFail: MARK_RAN
         - onError: HALT
         - not:
           - tableExists:
-              tableName: site_type_to_primary
+              schemaName: ${ARS_SCHEMA_NAME}
+              tableName: ars_org_project
       changes:
         - sqlFile:
-            path: siteTypeToPrimary.sql
+            path: arsOrgProject.sql
             relativeToChangelogFile: true
-        - rollback: drop table if exists site_type_to_primary cascade;
+        - rollback: drop table if exists ${ARS_SCHEMA_NAME}.ars_org_project;

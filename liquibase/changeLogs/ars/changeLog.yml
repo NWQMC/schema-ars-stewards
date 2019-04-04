@@ -3,7 +3,7 @@ databaseChangeLog:
     - dbms:
         type: postgresql
     - runningAs:
-        username: ${ARS_STEWARDS_OWNER}
+        username: ${ARS_SCHEMA_OWNER_USERNAME}
 
   - include:
       file: "tables/changeLog.yml"
