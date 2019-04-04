@@ -1,42 +1,95 @@
 # schema\-ars\-stewards
 
 Liquibase scripts for creating the ARS\_STEWARDS database schema objects in a Postgres database. 
-They are used for the Water Quality Portal (WQP). The repo also includes Docker Compose scripts to setup a continuous
-integration PostGIS database.
+They are used for the Water Quality Portal (WQP).
 
+## Docker
+Also included are Docker Compose scripts to create PostgreSQL and Liquibase containers for testing the scripts.
+
+### Docker Network
+A named Docker Network is required for local running of the containers. Creating this network allows you to run all of the WQP locally in individual containers without having to maintain a massive Docker Compose script encompassing all of the required pieces. (It is also possible to run portions of the system locally against remote services.) The name of this network is provided by the __LOCAL_NETWORK_NAME__ environment variable. The following is a sample command for creating your own local network. In this example the name is wqp and the ip addresses will be 172.25.0.x
+
+```
+docker network create --subnet=172.25.0.0/16 wqp
+```
+
+### Environment variables
 In order to use the docker compose scripts, you will need to create a .env file in the project directory containing
 the following (shown are example values):
+
 ```
 POSTGRES_PASSWORD=<changeMe>
 
-ARS_STEWARDS_OWNER=ars_stewards_owner
-ARS_STEWARDS_OWNER_PASSWORD=<changeMe>
-ARS_STEWARDS_DATABASE_NAME=ars_stewards_db
-ARS_STEWARDS_SCHEMA_NAME=ars_stewards
+ARS_DATABASE_ADDRESS=<ars_database_host>
+ARS_DATABASE_NAME=<ars_db>
+ARS_DB_OWNER_USERNAME=<wqp_core>
+ARS_DB_OWNER_PASSWORD=<changeMe>
 
-WQP_CORE_OWNER=wqp_core
-WQP_CORE_OWNER_PASSWORD=<changeMe>
+ARS_SCHEMA_NAME=<ars>
+ARS_SCHEMA_OWNER_USERNAME=<ars_owner>
+ARS_SCHEMA_OWNER_PASSWORD=<changeMe>
+
+WQP_SCHEMA_NAME=<wqp>
+WQP_SCHEMA_OWNER_USERNAME=<wqp_core>
+WQP_SCHEMA_OWNER_PASSWORD=<changeMe>
+
+LOCAL_NETWORK_NAME=<wqp>
+
+DB_IPV4=<172.25.0.2>
+DB_PORT=<5434>
+LIQUIBASE_IPV4=<172.25.0.10>
+
+LIQUIBASE_VERSION=<3.6.3>
+JDBC_JAR=<postgresql-42.2.5.jar>
 
 ```
+#### Environment variable definitions
 
-To create a postgres database and then run the liquibase scripts:
+* **POSTGRES_PASSWORD** - Password for the postgres user.
+
+* **ARS_DATABASE_ADDRESS** - Host name or IP address of the PostgreSQL database.
+* **ARS_DATABASE_NAME** - Name of the PostgreSQL database to create for containing the schema.
+* **ARS_DB_OWNER_USERNAME** - Role which will own the database.
+* **ARS_DB_OWNER_PASSWORD** - Password for the **ARS_SCHEMA_OWNER_USERNAME** role.
+
+* **ARS_SCHEMA_NAME** - Name of the schema to create for holding database objects.
+* **ARS_SCHEMA_OWNER_USERNAME** - Role will own the database objects.
+* **ARS_SCHEMA_OWNER_PASSWORD** - Password for the **ARS_SCHEMA_OWNER_USERNAME** role.
+
+* **WQP_SCHEMA_NAME** - Name of the schema for the WQP objects.
+* **WQP_SCHEMA_OWNER_USERNAME** - Role which owns the WQP database objects.
+* **WQP_SCHEMA_OWNER_PASSWORD** - Password for the **WQP_SCHEMA_OWNER_USERNAME** role.
+
+* **LOCAL_NETWORK_NAME** - The name of the local Docker Network you have created for using these images/containers.
+* **DB_IPV4** - The IP address in your Docker Network you would like assigned to the database container used for testing the Liquibase scripts.
+* **DB_PORT** - The localhost port on which to expose the script testing database container.
+* **LIQUIBASE_IPV4** - The IP address you would like assigned to the Liquibase runner container.
+
+* **LIQUIBASE_VERSION** - The version of Liquibase to install.
+* **JDBC_JAR** - The jdbc driver to install.
+
+### Testing Liquibase scripts
+The Liquibase scripts can be tested locally by spinning up the generic database (db) and the liquibase container.
+
 ```
 % docker-compose up -d db
 % docker-compose up liquibase
 ```
 
-The PostGIS database will be available on port 5434
+The local file system is mounted into the liquibase container. This allows you to change the liquibase and shell scripts and run the changes by just re-launching the liquibase container. Note that all standard Liquibase caveats apply.
 
-Other Helpful commands include:
+The PostGIS database will be available on your localhost's port $DB_PORT, allowing for visual inspection of the results.
+
+### Other Helpful commands include:
 * __docker-compose up__ to create and start the containers
 * __docker-compose ps__ to list the containers
 * __docker-compose stop__ or __docker-compose kill__ to stop the containers
 * __docker-compose start__ to start the containers
 * __docker-compose rm__ to remove all containers
-* __docker network inspect pubsdb_default__ to get the ip addresses of the running containers
+* __docker network ls__ to get a list of local docker network names
+* __docker network inspect XXX__ to get the ip addresses of the running containers
 * __docker-compose ps -q__ to get the Docker Compose container ids
 * __docker ps -a__ to list all the Docker containers
 * __docker rm <containerId>__ to remove a container
 * __docker rmi <imageId>__ to remove an image
 * __docker logs <containerID>__ to view the Docker Compose logs in a container
-

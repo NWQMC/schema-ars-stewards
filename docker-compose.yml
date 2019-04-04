@@ -1,28 +1,47 @@
-version: '3'
+version: '3.7'
 services:
   db:
-    image: stewards_db
+    image: ars_db
     build:
       context: .
+    networks:
+      wqp:
+        ipv4_address: ${DB_IPV4}
     environment:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${ARS_DATABASE_NAME}
     ports:
-      - 5434:5432
-    container_name: ARS_STEWARDS_Database
+      - ${DB_PORT}:5432
+    container_name: ${ARS_DATABASE_ADDRESS}
 
   liquibase:
-    image: stewards_liquibase
+    image: ars_liquibase
     build:
       context: ./liquibase
+      args:
+        - LIQUIBASE_VERSION=${LIQUIBASE_VERSION}
+        - A_JDBC_JAR=${JDBC_JAR}
+    networks:
+      wqp:
+        ipv4_address: ${LIQUIBASE_IPV4}
     environment:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-      - ARS_STEWARDS_OWNER=${ARS_STEWARDS_OWNER}
-      - ARS_STEWARDS_OWNER_PASSWORD=${ARS_STEWARDS_OWNER_PASSWORD}
-      - ARS_STEWARDS_DATABASE_NAME=${ARS_STEWARDS_DATABASE_NAME}
-      - ARS_STEWARDS_SCHEMA_NAME=${ARS_STEWARDS_SCHEMA_NAME}
-      - WQP_CORE_OWNER=${WQP_CORE_OWNER}
-      - WQP_CORE_OWNER_PASSWORD=${WQP_CORE_OWNER_PASSWORD}
+      - ARS_DATABASE_ADDRESS=${ARS_DATABASE_ADDRESS}
+      - ARS_DATABASE_NAME=${ARS_DATABASE_NAME}
+      - ARS_DB_OWNER_USERNAME=${ARS_DB_OWNER_USERNAME}
+      - ARS_DB_OWNER_PASSWORD=${ARS_DB_OWNER_PASSWORD}
+      - ARS_SCHEMA_NAME=${ARS_SCHEMA_NAME}
+      - ARS_SCHEMA_OWNER_USERNAME=${ARS_SCHEMA_OWNER_USERNAME}
+      - ARS_SCHEMA_OWNER_PASSWORD=${ARS_SCHEMA_OWNER_PASSWORD}
+      - WQP_SCHEMA_NAME=${WQP_SCHEMA_NAME}
+      - WQP_SCHEMA_OWNER_USERNAME=${WQP_SCHEMA_OWNER_USERNAME}
+      - WQP_SCHEMA_OWNER_PASSWORD=${WQP_SCHEMA_OWNER_PASSWORD}
     volumes:
-      - ./liquibase/changeLogs:/opt/liquibase/workspace
-      - ./liquibase/logs:/opt/liquibase/logs
-      - ./liquibase/dbInit:/docker-entrypoint-initdb.d
+      - ./liquibase/changeLogs:/home/java/workspace
+      - ./liquibase/scripts:/docker-entrypoint-initdb.d
+    container_name: ars_liquibase
+
+networks:
+  wqp:
+    external:
+      name: ${LOCAL_NETWORK_NAME}

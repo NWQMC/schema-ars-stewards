@@ -6,57 +6,75 @@ databaseChangeLog:
         username: postgres
 
   - changeSet:
-      author: mbucknell
-      id: "create.project.owner.role.${ARS_STEWARDS_OWNER}"
+      author: drsteini
+      id: "create.project.db.owner.role.${ARS_DB_OWNER_USERNAME}"
       preConditions:
         - onFail: MARK_RAN
         - onError: HALT
         - sqlCheck:
             expectedResult: 0
-            sql: select count(*) from pg_roles where rolname = '${ARS_STEWARDS_OWNER}';
+            sql: select count(*) from pg_roles where rolname = '${ARS_DB_OWNER_USERNAME}';
       changes:
-        - sql: create role ${ARS_STEWARDS_OWNER} with login password '${ARS_STEWARDS_OWNER_PASSWORD}';
-        - rollback: drop role if exists ${ARS_STEWARDS_OWNER};
+        - sql: create role ${ARS_DB_OWNER_USERNAME} with login password '${ARS_DB_OWNER_PASSWORD}';
+        - rollback: drop role if exists ${ARS_DB_OWNER_USERNAME};
+
+  - changeSet:
+      author: drsteini
+      id: "grant.${ARS_DB_OWNER_USERNAME}.to.postgres"
+      changes:
+        - sql: grant ${ARS_DB_OWNER_USERNAME} to postgres;
+        - rollback: revoke ${ARS_DB_OWNER_USERNAME} from postgres;
+
+  - changeSet:
+      author: mbucknell
+      id: "create.project.owner.role.${ARS_SCHEMA_OWNER_USERNAME}"
+      preConditions:
+        - onFail: MARK_RAN
+        - onError: HALT
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from pg_roles where rolname = '${ARS_SCHEMA_OWNER_USERNAME}';
+      changes:
+        - sql: create role ${ARS_SCHEMA_OWNER_USERNAME} with login password '${ARS_SCHEMA_OWNER_PASSWORD}';
+        - rollback: drop role if exists ${ARS_SCHEMA_OWNER_USERNAME};
 
   - changeSet:
       author: mbucknel
-      id: "grant.${ARS_STEWARDS_OWNER}.to.postgres"
+      id: "grant.${ARS_SCHEMA_OWNER_USERNAME}.to.postgres"
       changes:
-        - sql: grant ${ARS_STEWARDS_OWNER} to postgres;
-        - rollback: revoke ${ARS_STEWARDS_OWNER} from postgres;
+        - sql: grant ${ARS_SCHEMA_OWNER_USERNAME} to postgres;
+        - rollback: revoke ${ARS_SCHEMA_OWNER_USERNAME} from postgres;
 
   - changeSet:
       author: mbucknell
-      id: "create.project.owner.role.${WQP_CORE_OWNER}"
+      id: "create.project.owner.role.${WQP_SCHEMA_OWNER_USERNAME}"
       preConditions:
         - onFail: MARK_RAN
         - onError: HALT
         - sqlCheck:
             expectedResult: 0
-            sql: select count(*) from pg_roles where rolname = '${WQP_CORE_OWNER}';
+            sql: select count(*) from pg_roles where rolname = '${WQP_SCHEMA_OWNER_USERNAME}';
       changes:
-        - sql: create role ${WQP_CORE_OWNER} with login password '${WQP_CORE_OWNER_PASSWORD}';
-        - rollback: drop role if exists ${WQP_CORE_OWNER};
+        - sql: create role ${WQP_SCHEMA_OWNER_USERNAME} with login password '${WQP_SCHEMA_OWNER_PASSWORD}';
+        - rollback: drop role if exists ${WQP_SCHEMA_OWNER_USERNAME};
 
   - changeSet:
       author: mbucknell
-      id: "create.project.database.${ARS_STEWARDS_DATABASE_NAME}"
+      id: "create.project.database.${ARS_DATABASE_NAME}"
       preConditions:
         - onFail: MARK_RAN
         - onError: HALT
         - sqlCheck:
             expectedResult: 0
-            sql: select count(*) from pg_database where datname = '${ARS_STEWARDS_DATABASE_NAME}';
+            sql: select count(*) from pg_database where datname = '${ARS_DATABASE_NAME}';
       runInTransaction: false
       changes:
-        - sql: create database ${ARS_STEWARDS_DATABASE_NAME} with owner = ${ARS_STEWARDS_OWNER};
-        - rollback: drop database if exists ${ARS_STEWARDS_DATABASE_NAME};
+        - sql: create database ${ARS_DATABASE_NAME} with owner = ${ARS_DB_OWNER_USERNAME};
+        - rollback: drop database if exists ${ARS_DATABASE_NAME};
 
   - changeSet:
-      author: mbucknell
-      id: "alter.database.${ARS_STEWARDS_DATABASE_NAME}.search_path"
+      author: drsteini
+      id: "alter.role.${ARS_SCHEMA_OWNER_USERNAME}.search_path"
       changes:
-        - sql: alter database ${ARS_STEWARDS_DATABASE_NAME} set search_path = "$user", ${ARS_STEWARDS_OWNER}, public;
-        - rollback: alter database ${ARS_STEWARDS_DATABASE_NAME} reset search_path;
-
-
+        - sql: alter role "${ARS_SCHEMA_OWNER_USERNAME}" set search_path = "$user", ${ARS_SCHEMA_NAME}, ${WQP_SCHEMA_NAME}, public, tiger;
+        - rollback: alter role "${ARS_SCHEMA_OWNER_USERNAME}" reset search_path;

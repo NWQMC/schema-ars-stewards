@@ -3,19 +3,20 @@ databaseChangeLog:
     - dbms:
         type: postgresql
     - runningAs:
-        username: ${ARS_STEWARDS_OWNER}
+        username: ${ARS_SCHEMA_OWNER_USERNAME}
 
   - changeSet:
       author: drsteini
-      id: "create.table.char_name_to_type"
+      id: "create.table.${ARS_SCHEMA_NAME}.char_name_to_type"
       preConditions:
         - onFail: MARK_RAN
         - onError: HALT
         - not:
           - tableExists:
+              schemaName: ${ARS_SCHEMA_NAME}
               tableName: char_name_to_type
       changes:
         - sqlFile:
             path: charNameToType.sql
             relativeToChangelogFile: true
-        - rollback: drop table if exists char_name_to_type cascade;
+        - rollback: drop table if exists ${ARS_SCHEMA_NAME}.char_name_to_type cascade;
