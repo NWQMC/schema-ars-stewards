@@ -37,7 +37,7 @@ services:
       - WQP_SCHEMA_OWNER_USERNAME=${WQP_SCHEMA_OWNER_USERNAME}
       - WQP_SCHEMA_OWNER_PASSWORD=${WQP_SCHEMA_OWNER_PASSWORD}
     volumes:
-      - ./liquibase/changeLogs:/home/java/workspace
+      - ./liquibase/changeLogs:/home/java/workspace/ars
       - ./liquibase/scripts:/docker-entrypoint-initdb.d
     container_name: ars_liquibase
 
