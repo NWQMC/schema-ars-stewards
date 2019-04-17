@@ -3,7 +3,7 @@
 # ars schema scripts
 ${LIQUIBASE_HOME}/liquibase \
 	--classpath=${LIQUIBASE_HOME}/lib/${JDBC_JAR} \
-	--changeLogFile=${LIQUIBASE_WORKSPACE}/ars/changeLog.yml \
+	--changeLogFile=${LIQUIBASE_WORKSPACE_ARS}/ars/changeLog.yml \
 	--driver=org.postgresql.Driver \
 	--url=jdbc:postgresql://${ARS_DATABASE_ADDRESS}:5432/${ARS_DATABASE_NAME} \
 	--username=${ARS_SCHEMA_OWNER_USERNAME} \
