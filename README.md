@@ -50,7 +50,7 @@ JDBC_JAR=<postgresql-42.2.5.jar>
 * **ARS_DATABASE_ADDRESS** - Host name or IP address of the PostgreSQL database.
 * **ARS_DATABASE_NAME** - Name of the PostgreSQL database to create for containing the schema.
 * **ARS_DB_OWNER_USERNAME** - Role which will own the database.
-* **ARS_DB_OWNER_PASSWORD** - Password for the **ARS_SCHEMA_OWNER_USERNAME** role.
+* **ARS_DB_OWNER_PASSWORD** - Password for the **ARS_DB_OWNER_USERNAME** role.
 
 * **ARS_SCHEMA_NAME** - Name of the schema to create for holding database objects.
 * **ARS_SCHEMA_OWNER_USERNAME** - Role will own the database objects.
